@@ -925,10 +925,10 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 2bae8f3b-b91d-499d-83d2-1e6405cec805
+  cloudProjectId: fc24e277-bfe4-4795-ab1a-58e619293dcc
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: SoulLikeProject
+  projectName: TESTROGULIKE
   organizationId: kom7878
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
