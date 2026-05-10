@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerAttack : Attack
+public abstract class Attack : MonoBehaviour
 {
     private AttackType attackType;
     private Combat combat;
@@ -18,17 +18,7 @@ public class PlayerAttack : Attack
     {
         damage = itDefs.entityDefs.Damage; // 객체 데미지 받아오기임ㅇㅇ
     }
-    public override void GiveDamage()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            combat.GiveDamage(damage + attackType.weaponType.WeaponDamage);
-            // 여기에 무기 딜레이 추가해야됨ㅇㅇ attackType.weaponType.WeaponDelay
-        }
-    }
-    private void Update()
-    {
-        GiveDamage();
-    }
-    
+
+    public abstract void GiveDamage();
+
 }
