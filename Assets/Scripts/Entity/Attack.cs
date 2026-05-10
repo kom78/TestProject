@@ -22,17 +22,17 @@ public abstract class Attack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-    if (other.CompareTag("Mob"))
-    {
-        MobType mob = other.GetComponentInParent<MobType>();
-
-        if (mob != null && mob != GetComponentInParent<MobType>())
+        if (other.CompareTag("Mob"))
         {
-            isTargetHere = true;
-            target = other.GetComponentInParent<MobType>();
+            MobType mob = other.GetComponentInParent<MobType>();
+
+            if (mob != null && mob != GetComponentInParent<MobType>())
+            {
+                isTargetHere = true;
+                target = other.GetComponentInParent<MobType>();
+            }
         }
-    }
-    
+
     }
     private void OnTriggerExit(Collider other)
     {
