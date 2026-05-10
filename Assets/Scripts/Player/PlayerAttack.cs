@@ -2,33 +2,24 @@ using UnityEngine;
 
 public class PlayerAttack : Attack
 {
-    private AttackType attackType;
-    private Combat combat;
     private MobType itDefs;
 
     private float damage;
 
+    public override void DoAttack()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            GiveDamage(damage);
+        }
+    }
+
     private void Awake()
     {
-        attackType = GetComponentInChildren<AttackType>();
-        combat = GetComponentInChildren<Combat>();
         itDefs = GetComponent<MobType>();
     }
     private void Start()
     {
-        damage = itDefs.entityDefs.Damage; // 객체 데미지 받아오기임ㅇㅇ
+        this.damage = itDefs.entityDefs.Damage; // 객체 데미지 받아오기임ㅇㅇ
     }
-    public override void GiveDamage()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            combat.GiveDamage(damage + attackType.weaponType.WeaponDamage);
-            // 여기에 무기 딜레이 추가해야됨ㅇㅇ attackType.weaponType.WeaponDelay
-        }
-    }
-    private void Update()
-    {
-        GiveDamage();
-    }
-    
 }

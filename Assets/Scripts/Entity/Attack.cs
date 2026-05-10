@@ -1,22 +1,27 @@
 using UnityEngine;
-
-public class Combat : MonoBehaviour
+//컴포넌트 추가할 필요 없음ㅇㅇ
+public abstract class Attack : MonoBehaviour
 {
-    public MobType target = null;
-
+    private MobType target = null;
     private bool isTargetHere = false;
-    
-    public void GiveDamage(float damage)
+
+    private void Update()
+    {
+        DoAttack();
+    }
+    protected void GiveDamage(float damage)
     {
         if (target != null)
-        {
-            target.entityDefs.Hp -= damage;
-            Debug.Log(target.entityDefs.Hp);   
-        }
+            {
+                target.entityDefs.Hp -= damage;
+                Debug.Log(target.entityDefs.Hp);   
+            }
     }
 
+    public abstract void DoAttack(); //추상화ㅇㅇ
+
     private void OnTriggerEnter(Collider other)
-{
+    {
     if (other.CompareTag("Mob"))
     {
         MobType mob = other.GetComponentInParent<MobType>();
@@ -27,10 +32,12 @@ public class Combat : MonoBehaviour
             target = other.GetComponentInParent<MobType>();
         }
     }
-}
+    
+    }
     private void OnTriggerExit(Collider other)
     {
         isTargetHere = false;
         target = null;
     }
+
 }
